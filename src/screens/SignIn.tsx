@@ -6,7 +6,7 @@ import { Input } from '../components/Input'; // Componente que criamos para Inpu
 import { Button } from '../components/Button'; // Componente que criamos para Button
 
 export function SignIn() {
-    const [name, setName] = useState('Victor');
+    const [name, setName] = useState('');
     const [password, setPassword] = useState('');
     const { colors } = useTheme(); // Hook do Native Base utilizado para aplicar os estilos do arquivo theme
 

@@ -1,7 +1,7 @@
 # ignite-lab / rockethelp
 
 Versão Mobile do projeto da RocketSeat do curso de React Native.
-Vídeo da Aula 2, parei no tempo: 01:30:10.
+Vídeo da Aula 3, parei no tempo: 00:00:00.
 
 ------ // ------
 
