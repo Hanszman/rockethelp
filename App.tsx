@@ -1,21 +1,22 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { NativeBaseProvider } from 'native-base'; // Biblioteca utilizada para estilos e componentes de layout prontos, como se fosse um bootstrap específico para React, React Native, Next, etc.
+import { THEME } from './src/styles/theme'; // Arquivo de temas criado com base na estrutura do Native Base com o intuito de já deixar declarado todos os estilos de cores, fontes e tamanhos no projeto
+import { useFonts, Roboto_400Regular, Roboto_700Bold } from '@expo-google-fonts/roboto'; // Importação da fonte "Roboto" instalada através do comando: expo install expo-font @expo-google-fonts/roboto
+import { Loading } from './src/components/Loading'; // Componente que criamos para Loading
+import { SignIn } from './src/screens/SignIn'; // Componente que criamos para Login
 
 export default function App() {
+  const [fontsLoaded] = useFonts({Roboto_400Regular, Roboto_700Bold}); // Comando para utilizar as fontes importadas, mas elas carregam de forma assincrona, por isso é preciso esperá-las carregarem
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NativeBaseProvider theme={THEME}>
+      {
+        // If ternário para verificar se as fontes já carregaram. Se houverem carregado, exibe o componente de Login. Se não houverem carregado, exibe o Loading.
+        fontsLoaded ? <SignIn/> : <Loading/>
+      }
+    </NativeBaseProvider>    
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+// As tags de componentes do React Native são específicas pro React Native, pois ele faz a tradução dessas tags para as tags específicas do IOS e do Android.
+// Por exemplo, a tag View do React Native pode ser entendida como uma div do html e a tag Text como o p do html.
