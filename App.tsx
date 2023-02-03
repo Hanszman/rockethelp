@@ -1,7 +1,7 @@
 import React from 'react';
-import { NativeBaseProvider } from 'native-base'; // Biblioteca utilizada para estilos e componentes de layout prontos, como se fosse um bootstrap específico para React, React Native, Next, etc.
+import { NativeBaseProvider, StatusBar } from 'native-base'; // Biblioteca utilizada para estilos e componentes de layout prontos, como se fosse um bootstrap específico para React, React Native, Next, etc.
 import { THEME } from './src/styles/theme'; // Arquivo de temas criado com base na estrutura do Native Base com o intuito de já deixar declarado todos os estilos de cores, fontes e tamanhos no projeto
-import { useFonts, Roboto_400Regular, Roboto_700Bold } from '@expo-google-fonts/roboto'; // Importação da fonte "Roboto" instalada através do comando: expo install expo-font @expo-google-fonts/roboto
+import { useFonts, Roboto_400Regular, Roboto_700Bold } from '@expo-google-fonts/roboto'; // Importação da fonte "Roboto" instalada através do comando: "expo install expo-font @expo-google-fonts/roboto"
 import { Loading } from './src/components/Loading'; // Componente que criamos para Loading
 import { SignIn } from './src/screens/SignIn'; // Componente que criamos para Login
 
@@ -10,10 +10,10 @@ export default function App() {
 
   return (
     <NativeBaseProvider theme={THEME}>
-      {
-        // If ternário para verificar se as fontes já carregaram. Se houverem carregado, exibe o componente de Login. Se não houverem carregado, exibe o Loading.
-        fontsLoaded ? <SignIn/> : <Loading/>
-      }
+      <StatusBar barStyle='light-content' backgroundColor='transparent' translucent/>
+      {/* Faz a barra de status dos ícones nativos do celular mudarem de cor para branco, o background para transparente e com que o aplicativo comece do canto superior da tela ao invés de para baixo da barra */}
+      { fontsLoaded ? <SignIn/> : <Loading/> }
+      {/* If ternário para verificar se as fontes já carregaram. Se houverem carregado, exibe o componente de Login. Se não houverem carregado, exibe o Loading. */}
     </NativeBaseProvider>    
   );
 }
